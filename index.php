@@ -15,10 +15,11 @@
 function twSearch(){
     ?>
 
+    <!-- optional code button -->
+    <div class="search-button"><button class="js-search"><i class="fa fa-search"></i></button></div>
 
-        <div class="search-button"><button class="js-search"><i class="fa fa-search"></i></button>
-
-        <div class="search-popup">
+    <!-- meet and potatoes -->
+    <div class="search-popup">
       <div class="search-bg"></div>
       <div class="search-form">
         <form action="/">
@@ -31,7 +32,6 @@ function twSearch(){
         </form>
       </div>
     </div>
-  </div>
 
         <?php
 }

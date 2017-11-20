@@ -84,7 +84,7 @@ function twSearchSettings( $wp_customize ) {
             'type' => 'radio',
             'choices'        => array(
                 'icon'   => __( 'Icon' ),
-                'word'  => __( 'Search' ),
+                'word'  => __( 'Search (word)' ),
                 'both'  => __( 'Both' )
             )
         )

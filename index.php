@@ -97,6 +97,7 @@ add_action( 'customize_register', 'twSearchSettings' );
  */
 function twSearch(){
 
+    $twSearchColor = 'dark'; // default
     $twSearchColor = get_theme_mod('twSearch_color');
 
     ?>
@@ -141,6 +142,7 @@ add_filter( 'wp_nav_menu_items', 'FE_twSearch', 10, 2 );
 function FE_twSearch( $items, $args ) {
 
     $twSearchLocation = get_theme_mod( 'twSearch_location');
+    $twSearchDisplay = 'icon'; // default;
     $twSearchDisplay = get_theme_mod( 'twSearch_display');
 
     $menuSlug = $args->menu->slug;

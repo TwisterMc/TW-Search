@@ -29,8 +29,8 @@ function twSearchSettings( $wp_customize ) {
     $wp_customize->add_section(
         'twSearch',
         array(
-            'title' => 'TW Search Settings',
-            'description' => 'Customize the search settings.',
+            'title' => __( 'TW Search Settings' ),
+            'description' => __( 'Customize the search settings.' ),
             'priority' => 35,
         )
     );
@@ -44,7 +44,7 @@ function twSearchSettings( $wp_customize ) {
     $wp_customize->add_control(
         'twSearch_color',
         array(
-            'label' => 'Overlay Background',
+            'label' => __( 'Overlay Background' ),
             'section' => 'twSearch',
             'type' => 'radio',
             'choices'        => array(
@@ -63,7 +63,7 @@ function twSearchSettings( $wp_customize ) {
     $wp_customize->add_control(
         'twSearch_location',
         array(
-            'label' => 'Add To Menu',
+            'label' => __( 'Add To Menu' ),
             'section' => 'twSearch',
             'type' => 'radio',
             'choices'        => twSearchGetNavMenus()
@@ -79,7 +79,7 @@ function twSearchSettings( $wp_customize ) {
     $wp_customize->add_control(
         'twSearch_display',
         array(
-            'label' => 'Display As',
+            'label' => __( 'Display As' ),
             'section' => 'twSearch',
             'type' => 'radio',
             'choices'        => array(
@@ -110,10 +110,10 @@ function twSearch(){
       <div class="twSearchFormWrapper twSearchFormWrapper-<?php echo $twSearchColor; ?>">
         <form action="/">
           <div class="twSearchForm">
-            <input type="search" class="twSearchBox" value="<?php echo get_search_query(); ?>" name="s" placeholder="input search string and hit enter">
-            <label for="search">Search</label>
+            <input type="search" class="twSearchBox" value="<?php echo get_search_query(); ?>" name="s" placeholder="<?php _e( 'input search string and hit enter' ); ?>">
+            <label for="search"><?php _e( 'Search' ); ?></label>
               <input type="submit" value="Search" class="searchButton">
-              <div class="twSearchBoxDesc">input search string and hit enter</div>
+              <div class="twSearchBoxDesc"><?php _e( 'input search string and hit enter' ); ?></div>
           </div>
         </form>
       </div>
@@ -162,11 +162,11 @@ function FE_twSearch( $items, $args ) {
         if( $menuSlug == $twSearchLocation ) {
             $items .= '<li class="twSearch">';
             if ($twSearchDisplay == 'icon') {
-                $items .= '<a href="#" class="js-twSearch twSearchIcon"><span class="dashicons dashicons-search"></span><span class="twSearchIsHidden">Search</span></a>';
+                $items .= '<a href="#" class="js-twSearch twSearchIcon"><span class="dashicons dashicons-search"></span><span class="twSearchIsHidden">' . __('Search') . '</span></a>';
             } else if ($twSearchDisplay == 'word') {
-                $items .= '<a href="#" class="js-twSearch">Search</a>';
+                $items .= '<a href="#" class="js-twSearch">' . __('Search') . '</a>';
             } else {
-                $items .= '<a href="#" class="js-twSearch twSearchIcon"><span class="dashicons dashicons-search"></span> Search</a>';
+                $items .= '<a href="#" class="js-twSearch twSearchIcon"><span class="dashicons dashicons-search"></span> ' . __('Search') . '</a>';
             }
             $items .= '</li>';
             return $items;

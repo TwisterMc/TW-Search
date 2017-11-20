@@ -101,11 +101,11 @@
     padding: 10px;
 }
 
-.twSearchBoxDesc-dark {
+.twSearchBg-dark .twSearchBoxDesc {
     color: #ffffff;
 }
 
-.twSearchBoxDesc-light {
+.twSearchBg-light .twSearchBoxDesc {
     color: #333333;
 }
 

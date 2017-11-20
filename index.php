@@ -10,17 +10,100 @@
 */
 
 /**
- * Add Search
+ * Get registered navigation menus
+ */
+function twSearchGetNavMenus() {
+    $menus = get_terms( 'nav_menu', array( 'hide_empty' => true ) );
+    $navMenus = array( 'none'   => __( 'None (use .js-twSearch class)' ), );
+    foreach ( $menus as $key => $value ) {
+        $navMenus[$value->slug] = $value->name;
+    }
+    return $navMenus;
+}
+
+/**
+ * Settings
+ * Adds the individual sections, settings, and controls to the theme customizer
+ */
+function twSearchSettings( $wp_customize ) {
+    $wp_customize->add_section(
+        'twSearch',
+        array(
+            'title' => 'TW Search Settings',
+            'description' => 'Customize the search settings.',
+            'priority' => 35,
+        )
+    );
+    /* Background Appearance */
+    $wp_customize->add_setting(
+        'twSearch_color',
+        array(
+            'default' => 'dark',
+        )
+    );
+    $wp_customize->add_control(
+        'twSearch_color',
+        array(
+            'label' => 'Overlay Background',
+            'section' => 'twSearch',
+            'type' => 'radio',
+            'choices'        => array(
+                'dark'   => __( 'Dark' ),
+                'light'  => __( 'Light' )
+            )
+        )
+    );
+    /* Location */
+    $wp_customize->add_setting(
+        'twSearch_location',
+        array(
+            'default' => 'none',
+        )
+    );
+    $wp_customize->add_control(
+        'twSearch_location',
+        array(
+            'label' => 'Add To Menu',
+            'section' => 'twSearch',
+            'type' => 'radio',
+            'choices'        => twSearchGetNavMenus()
+        )
+    );
+    /* Display */
+    $wp_customize->add_setting(
+        'twSearch_display',
+        array(
+            'default' => 'icon',
+        )
+    );
+    $wp_customize->add_control(
+        'twSearch_display',
+        array(
+            'label' => 'Display As',
+            'section' => 'twSearch',
+            'type' => 'radio',
+            'choices'        => array(
+                'icon'   => __( 'Icon' ),
+                'word'  => __( 'Search' ),
+                'both'  => __( 'Both' )
+            )
+        )
+    );
+}
+add_action( 'customize_register', 'twSearchSettings' );
+
+/**
+ * Add Search Overlay
  */
 function twSearch(){
-    ?>
 
-    <!-- optional code button -->
-    <div class="search-button"><button class="js-twSearch"><i class="fa fa-search"></i></button></div>
+    $twSearchColor = get_theme_mod('twSearch_color');
+
+    ?>
 
     <!-- meet and potatoes -->
     <div class="twSearchPopup">
-      <div class="twSearchBg"></div>
+      <div class="twSearchBg twSearchBg-<?php echo $twSearchColor; ?>"></div>
       <div class="twSearchFormWrapper">
         <form action="/">
           <div class="twSearchForm">
@@ -40,7 +123,7 @@ add_action( 'get_footer', 'twSearch' );
 
 /**
  * Add Custom CSS
- * For Search
+ * For Search Overlay
  */
 
 function twSearch_addCSSJS() {
@@ -50,3 +133,37 @@ function twSearch_addCSSJS() {
 }
 
 add_action( 'wp_enqueue_scripts', 'twSearch_addCSSJS' );
+
+/**
+ * Add Search link to menu
+ */
+add_filter( 'wp_nav_menu_items', 'FE_twSearch', 10, 2 );
+function FE_twSearch( $items, $args ) {
+
+    $twSearchLocation = get_theme_mod( 'twSearch_location');
+    $twSearchDisplay = get_theme_mod( 'twSearch_display');
+
+    $menuSlug = $args->menu->slug;
+
+    // Sometimes things don't return like we expected.
+    if (!$menuSlug) {
+        $menuSlug = get_object_vars($args);
+        $menuSlug = $menuSlug[menu];
+    }
+
+    if ($twSearchLocation) {
+        if( $menuSlug == $twSearchLocation ) {
+            $items .= '<li class="twSearch">';
+            if ($twSearchDisplay == 'icon') {
+                $items .= '<a href="#" class="js-twSearch twSearchIcon"><i class="fa fa-search"></i><span class="twSearchIsHidden">Search</span></a>';
+            } else if ($twSearchDisplay == 'word') {
+                $items .= '<a href="#" class="js-twSearch">Search</a>';
+            } else {
+                $items .= '<a href="#" class="js-twSearch twSearchIcon"><i class="fa fa-search"></i> Search</a>';
+            }
+            $items .= '</li>';
+            return $items;
+        }
+        return $items;
+    }
+}

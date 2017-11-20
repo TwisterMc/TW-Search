@@ -162,11 +162,11 @@ function FE_twSearch( $items, $args ) {
         if( $menuSlug == $twSearchLocation ) {
             $items .= '<li class="twSearch">';
             if ($twSearchDisplay == 'icon') {
-                $items .= '<a href="#" class="js-twSearch twSearchIcon"><i class="fa fa-search"></i><span class="twSearchIsHidden">Search</span></a>';
+                $items .= '<a href="#" class="js-twSearch twSearchIcon"><span class="dashicons dashicons-search"></span><span class="twSearchIsHidden">Search</span></a>';
             } else if ($twSearchDisplay == 'word') {
                 $items .= '<a href="#" class="js-twSearch">Search</a>';
             } else {
-                $items .= '<a href="#" class="js-twSearch twSearchIcon"><i class="fa fa-search"></i> Search</a>';
+                $items .= '<a href="#" class="js-twSearch twSearchIcon"><span class="dashicons dashicons-search"></span> Search</a>';
             }
             $items .= '</li>';
             return $items;

@@ -17,4 +17,3 @@ You can choose to add a custom class `js-twSearch`. This can be added it to anyt
 3. Screenshots
 4. Make Better
 5. Test
-6. Remove assumption that they have font-awesome as we're using that for the search icon. Move to dash icon.

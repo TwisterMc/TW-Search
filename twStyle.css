@@ -110,6 +110,10 @@
 }
 
 @media screen and (max-width: 600px) {
+    .twSearchFormWrapper {
+        margin: 7em 2em;
+    }
+
     .twSearchForm input[type=submit],
     .twSearchForm input[type=submit]:focus,
     .twSearchForm input[type=submit]:active {

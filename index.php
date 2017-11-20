@@ -107,7 +107,7 @@ function twSearch(){
     <!-- meet and potatoes -->
     <div class="twSearchPopup">
       <div class="twSearchBg twSearchBg-<?php echo $twSearchColor; ?>"></div>
-      <div class="twSearchFormWrapper">
+      <div class="twSearchFormWrapper twSearchFormWrapper-<?php echo $twSearchColor; ?>">
         <form action="/">
           <div class="twSearchForm">
             <input type="search" class="twSearchBox" value="<?php echo get_search_query(); ?>" name="s" placeholder="input search string and hit enter">

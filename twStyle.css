@@ -1,92 +1,94 @@
-.search-popup {
+.twSearchPopup {
     display: none;
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
-  }
-  .search-bg {
+}
+
+.twSearchBg {
     position: absolute;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, .8);
-  }
+}
 
-.search-popup label {
+.twSearchPopup label {
     color: white;
 }
-  
-  .search-form {
+
+.twSearchFormWrapper {
     display: block;
     margin: 7em 4em;
     position: relative;
     right: -100%;
-  }
-  
-  .form {
+}
+
+.twSearchForm {
     position: relative;
-  }
-  
-  .form .searchBox {
+}
+
+.twSearchForm .twSearchBox {
     outline: none;
     border-color: #dad6d5;
-      background-color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 1);
     width: 100%;
     padding: 5px 20px;
-      color: #333333;
-      font-size: 30px;
-      line-height: 1.6;
-      height:auto;
-  }
-  
-  .form .searchBox:focus::-webkit-input-placeholder {
+    color: #333333;
+    font-size: 30px;
+    line-height: 1.6;
+    height: auto;
+}
+
+.twSearchForm .twSearchBox:focus::-webkit-input-placeholder {
     opacity: 0;
-  }
-  
-  .form .searchBox:focus::-moz-placeholder {
+}
+
+.twSearchForm .twSearchBox:focus::-moz-placeholder {
     opacity: 0;
-  }
-  
-  .form .searchBox:-ms-input-placeholder {
+}
+
+.twSearchForm .twSearchBox:-ms-input-placeholder {
     opacity: 0;
-  }
-  
-  .form .searchBox:focus:-moz-placeholder {
+}
+
+.twSearchForm .twSearchBox:focus:-moz-placeholder {
     opacity: 0;
-  }
-  
-  .form label {
+}
+
+.twSearchForm label {
     position: absolute;
     left: -9999px;
-  }
+}
 
-.form input[type=submit],
-.form input[type=submit]:focus,
-.form input[type=submit]:active {
+.twSearchForm input[type=submit],
+.twSearchForm input[type=submit]:focus,
+.twSearchForm input[type=submit]:active {
     font-size: 30px;
-                margin-top: 10px;
-                position: absolute;
-                right: 0;
+    margin-top: 10px;
+    position: absolute;
+    right: 0;
     line-height: 1.2;
     top: auto;
 
-            }
+}
 
-            .searchBoxDesc {
-                padding: 10px;
-                color: #ffffff;
-            }
+.twSearchBoxDesc {
+    padding: 10px;
+    color: #ffffff;
+}
 
 @media screen and (max-width: 600px) {
-    .form input[type=submit],
-    .form input[type=submit]:focus,
-    .form input[type=submit]:active {
+    .twSearchForm input[type=submit],
+    .twSearchForm input[type=submit]:focus,
+    .twSearchForm input[type=submit]:active {
         font-size: 20px;
     }
-    .searchBoxDesc {
+
+    .twSearchBoxDesc {
         display: none;
     }
 }

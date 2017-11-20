@@ -16,18 +16,18 @@ function twSearch(){
     ?>
 
     <!-- optional code button -->
-    <div class="search-button"><button class="js-search"><i class="fa fa-search"></i></button></div>
+    <div class="search-button"><button class="js-twSearch"><i class="fa fa-search"></i></button></div>
 
     <!-- meet and potatoes -->
-    <div class="search-popup">
-      <div class="search-bg"></div>
-      <div class="search-form">
+    <div class="twSearchPopup">
+      <div class="twSearchBg"></div>
+      <div class="twSearchFormWrapper">
         <form action="/">
-          <div class="form">
-            <input type="search" class="searchBox" value="<?php echo get_search_query(); ?>" name="s" placeholder="input search string and hit enter">
+          <div class="twSearchForm">
+            <input type="search" class="twSearchBox" value="<?php echo get_search_query(); ?>" name="s" placeholder="input search string and hit enter">
             <label for="search">Search</label>
               <input type="submit" value="Search" class="searchButton">
-              <div class="searchBoxDesc">input search string and hit enter</div>
+              <div class="twSearchBoxDesc">input search string and hit enter</div>
           </div>
         </form>
       </div>

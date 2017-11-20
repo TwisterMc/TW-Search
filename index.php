@@ -3,7 +3,7 @@
 * Plugin Name: TW Search
 * Plugin URI: http://www.twistermc.com/
 * Description: Adding search on an overlay.
-* Version: 0.1
+* Version: 0.2
 * Author: Thomas McMahon
 * Author URI: http://www.twistermc.com/
 * License: A "Slug" license name e.g. GPL12

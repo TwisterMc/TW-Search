@@ -1,6 +1,6 @@
 # TW-Search Read Me
 
-Plugin to add a search overlay. By default, this doesn't work out of the box. You either need to add the custom class or change the settings.
+Plugin to add a search overlay. By default, this doesn't work out of the box. You either need to add the custom class or change the settings in the customizer.
 
 ## To Use
 1. Install

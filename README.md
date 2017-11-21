@@ -2,6 +2,8 @@
 
 Plugin to add a search overlay. By default, this doesn't work out of the box. You either need to add the custom class or change the settings in the customizer.
 
+![Search Overlay Screenshot](search-overlay.jpg "Search Overlay Screenshot")
+
 ## To Use
 1. Install
 2. Activate

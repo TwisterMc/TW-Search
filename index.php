@@ -1,7 +1,7 @@
 <?php
 /**
 * Plugin Name: TW Search
-* Plugin URI: http://www.twistermc.com/
+* Plugin URI: https://www.twistermc.com/43150/tw-search-overlay-for-wordpress/
 * Description: Adding search on an overlay.
 * Version: 0.2
 * Author: Thomas McMahon

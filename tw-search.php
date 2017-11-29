@@ -291,6 +291,13 @@ add_action( 'customize_controls_enqueue_scripts', 'tw_search_customize_controls_
  */
 function tw_search_menu_items( $items, $args ) {
 
+	/**
+	 * Don't affect in admin, unless it's customizer.
+	 */
+	if ( is_admin() && ! is_customize_preview() ) {
+		return $items;
+	}
+
 	$twSearchLocation = get_theme_mod( 'twSearch_location' );
 	$twSearchDisplay  = get_theme_mod( 'twSearch_display' );
 

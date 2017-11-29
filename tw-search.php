@@ -22,6 +22,46 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * The plugin version.
+ *
+ * This should match the version string in the plugin bootstrap header.
+ * If you update the version number in the plugin header, update this constant to match, and vice versa.
+ *
+ * @var string TWS_VERSION
+ */
+define( 'TWS_VERSION', '0.2.1' );
+
+/**
+ * The full path and filename of this plugin file with symlinks resolved.
+ *
+ * @var string TWS_FILE
+ */
+define( 'TWS_FILE', __FILE__ );
+
+/**
+ * The full path to this plugin directory with symlinks resolved.
+ *
+ * @var string TWS_DIR
+ */
+define( 'TWS_DIR', dirname( TWS_FILE ) . '/' );
+
+/**
+ * The relative path to this plugin directory, from WP_PLUGIN_DIR.
+ *
+ * @var string TWS_DIR
+ */
+define( 'TWS_REL_DIR', basename( TWS_DIR ) . '/' );
+
+/**
+ * The URL to this plugin directory, with trailing slash.
+ *
+ * Example: https://example.local/wp-content/plugins/tw-search/
+ *
+ * @const string TWS_URL
+ */
+define( 'TWS_URL', plugins_url( '/', TWS_FILE ) );
+
+/**
  * Get registered navigation menus
  */
 function twSearchGetNavMenus() {

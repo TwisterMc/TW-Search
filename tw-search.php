@@ -1,13 +1,18 @@
 <?php
 /**
-* Plugin Name: TW Search
-* Plugin URI: https://www.twistermc.com/43150/tw-search-overlay-for-wordpress/
-* Description: Adding search on an overlay.
-* Version: 0.2
-* Author: Thomas McMahon
-* Author URI: http://www.twistermc.com/
-* License: A "Slug" license name e.g. GPL12
-*/
+ * @wordpress-plugin
+ * Plugin Name:       TW Search
+ * Plugin URI:        https://www.twistermc.com/43150/tw-search-overlay-for-wordpress/
+ * Description:       Adds a search icon to menu and displays search input in an overlay.
+ * Version:           0.2.1
+ * Author:            Thomas McMahon
+ * Author URI:        http://www.twistermc.com/
+ * License:           GPL-3.0+
+ * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * Text Domain:       tw-search
+ * Domain Path:       /languages
+ * GitHub Plugin URI: TwisterMc/TW-Search
+ */
 
 /**
  * Get registered navigation menus

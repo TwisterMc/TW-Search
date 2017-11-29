@@ -280,10 +280,16 @@ function tw_search_customize_controls_enqueue_scripts() {
 add_action( 'customize_controls_enqueue_scripts', 'tw_search_customize_controls_enqueue_scripts' );
 
 /**
- * Add Search link to menu
+ * Add search link menu item.
+ *
+ * @filter wp_nav_menu_items
+ *
+ * @param string    $items The HTML list content for the menu items.
+ * @param \stdClass $args  An object containing wp_nav_menu() arguments.
+ *
+ * @return string
  */
-add_filter( 'wp_nav_menu_items', 'FE_twSearch', 10, 2 );
-function FE_twSearch( $items, $args ) {
+function tw_search_menu_items( $items, $args ) {
 
 	$twSearchLocation = get_theme_mod( 'twSearch_location' );
 	$twSearchDisplay  = get_theme_mod( 'twSearch_display' );
@@ -318,6 +324,8 @@ function FE_twSearch( $items, $args ) {
 		return $items;
 	}
 }
+
+add_filter( 'wp_nav_menu_items', 'tw_search_menu_items', 10, 2 );
 
 /**
  * Get registered navigation menus utility function.

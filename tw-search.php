@@ -177,6 +177,30 @@ function tw_search_settings( $wp_customize ) {
 add_action( 'customize_register', 'tw_search_settings' );
 
 /**
+ * Add dashicon to radio button label.
+ *
+ * The use of esc_html in Customizer is preventing us from using a dashicon on a radio button label,
+ * we can bypass that here. Be careful what you do with the esc_html filter.
+ *
+ * @filter esc_html
+ *
+ * @param $safe_text
+ * @param $text
+ *
+ * @return string
+ */
+function tw_search_esc_html( $safe_text, $text ) {
+
+	if ( __( 'Magnifying Glass Icon', 'tw-search' ) !== $text ) {
+		return $safe_text;
+	}
+
+	return __( 'Magnifying Glass Icon', 'tw-search' ) . ' <span class="dashicons dashicons-search"></span>';
+}
+
+add_filter( 'esc_html', 'tw_search_esc_html', 10, 2 );
+
+/**
  * Add Search Overlay
  */
 function twSearch() {

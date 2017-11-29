@@ -62,20 +62,6 @@ define( 'TWS_REL_DIR', basename( TWS_DIR ) . '/' );
 define( 'TWS_URL', plugins_url( '/', TWS_FILE ) );
 
 /**
- * Get registered navigation menus
- */
-function twSearchGetNavMenus() {
-
-	$menus    = get_terms( 'nav_menu', array( 'hide_empty' => true ) );
-	$navMenus = array( 'none' => __( 'None (use .js-twSearch class)' ), );
-	foreach ( $menus as $key => $value ) {
-		$navMenus[ $value->slug ] = $value->name;
-	}
-
-	return $navMenus;
-}
-
-/**
  * Settings
  * Adds the individual sections, settings, and controls to the theme customizer
  */
@@ -120,7 +106,7 @@ function twSearchSettings( $wp_customize ) {
 			'label'   => __( 'Add To Menu' ),
 			'section' => 'twSearch',
 			'type'    => 'radio',
-			'choices' => twSearchGetNavMenus()
+			'choices' => tw_search_get_nav_menus()
 		)
 	);
 	/* Display */
@@ -235,4 +221,27 @@ function FE_twSearch( $items, $args ) {
 
 		return $items;
 	}
+}
+
+/**
+ * Get registered navigation menus utility function.
+ */
+function tw_search_get_nav_menus() {
+
+	$menus = get_terms(
+		'nav_menu',
+		array(
+			'hide_empty' => true,
+		)
+	);
+
+	$nav_menus = array(
+		'none' => __( 'None (use .js-twSearch class)', 'tw-search' ),
+	);
+
+	foreach ( $menus as $key => $value ) {
+		$nav_menus[ $value->slug ] = $value->name;
+	}
+
+	return $nav_menus;
 }

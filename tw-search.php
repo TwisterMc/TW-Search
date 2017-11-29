@@ -143,8 +143,8 @@ add_action( 'get_footer', 'twSearch' );
 
 function twSearch_addCSSJS() {
     // Respects SSL, Style.css is relative to the current file
-    wp_enqueue_style( 'twSearch-css', plugins_url('twStyle.css', __FILE__) );
-    wp_enqueue_script( 'twSearch-js', plugin_dir_url( __FILE__ ) . 'twScripts.js', array('jquery'), '1.0.1', false );
+    wp_enqueue_style( 'twSearch-css', plugins_url('tw-search-style.css', __FILE__) );
+    wp_enqueue_script( 'twSearch-js', plugin_dir_url( __FILE__ ) . 'tw-search-scripts.js', array('jquery'), '1.0.1', false );
 }
 
 add_action( 'wp_enqueue_scripts', 'twSearch_addCSSJS' );

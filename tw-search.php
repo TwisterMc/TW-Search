@@ -71,76 +71,110 @@ function tw_search_load_plugin() {
 add_action( 'plugins_loaded', 'tw_search_load_plugin' );
 
 /**
- * Settings
- * Adds the individual sections, settings, and controls to the theme customizer
+ * Add plugin settings to the Customizer.
+ *
+ * Adds the individual sections, settings, and controls to the theme customizer.
+ *
+ * @action customize_register
+ *
+ * @param WP_Customize_Manager $wp_customize WP_Customize_Manager instance.
  */
-function twSearchSettings( $wp_customize ) {
+function tw_search_settings( $wp_customize ) {
+
+	/**
+	 * Add TW Search customize section.
+	 */
 	$wp_customize->add_section(
 		'twSearch',
 		array(
-			'title'       => __( 'TW Search Settings' ),
-			'description' => __( 'Customize the search settings.' ),
+			'title'       => __( 'TW Search Settings', 'tw-search' ),
+			'description' => __( 'Customize the search settings.', 'tw-search' ),
 			'priority'    => 35,
 		)
 	);
-	/* Background Appearance */
+
+	/**
+	 * Add background appearance customize setting.
+	 */
 	$wp_customize->add_setting(
 		'twSearch_color',
 		array(
 			'default' => 'dark',
 		)
 	);
+
+	/**
+	 * Add background appearance customize control.
+	 */
 	$wp_customize->add_control(
 		'twSearch_color',
 		array(
-			'label'   => __( 'Overlay Background' ),
+			'label'   => __( 'Overlay Background', 'tw-search' ),
 			'section' => 'twSearch',
 			'type'    => 'radio',
 			'choices' => array(
-				'dark'  => __( 'Dark' ),
-				'light' => __( 'Light' )
-			)
+				'dark'  => __( 'Dark', 'tw-search' ),
+				'light' => __( 'Light', 'tw-search' ),
+			),
 		)
 	);
-	/* Location */
+
+	/**
+	 * Add location customize setting.
+	 */
 	$wp_customize->add_setting(
 		'twSearch_location',
 		array(
 			'default' => 'none',
 		)
 	);
+
+	/**
+	 * Add location customize control.
+	 */
 	$wp_customize->add_control(
 		'twSearch_location',
 		array(
-			'label'   => __( 'Add To Menu' ),
+			'label'   => __( 'Add To Menu', 'tw-search' ),
 			'section' => 'twSearch',
 			'type'    => 'radio',
-			'choices' => tw_search_get_nav_menus()
+			'choices' => tw_search_get_nav_menus(),
 		)
 	);
-	/* Display */
+
+	/**
+	 * Add display customize setting.
+	 */
 	$wp_customize->add_setting(
 		'twSearch_display',
 		array(
 			'default' => 'icon',
 		)
 	);
+
+	/**
+	 * Add display customize control.
+	 *
+	 * If you change the 'Magnifying Glass Icon' label text, it needs to be updated in tw_search_esc_html as well.
+	 *
+	 * @see tw_search_esc_html()
+	 */
 	$wp_customize->add_control(
 		'twSearch_display',
 		array(
-			'label'   => __( 'Display As' ),
+			'label'   => __( 'Display As', 'tw-search' ),
 			'section' => 'twSearch',
 			'type'    => 'radio',
 			'choices' => array(
-				'icon' => __( 'Icon' ),
-				'word' => __( 'Search (word)' ),
-				'both' => __( 'Both' )
-			)
+				'icon' => __( 'Magnifying Glass Icon', 'tw-search' ),
+				'word' => __( 'Search (word)', 'tw-search' ),
+				'both' => __( 'Both', 'tw-search' ),
+			),
 		)
 	);
 }
 
-add_action( 'customize_register', 'twSearchSettings' );
+add_action( 'customize_register', 'tw_search_settings' );
 
 /**
  * Add Search Overlay

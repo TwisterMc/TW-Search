@@ -243,21 +243,30 @@ function tw_search() {
 add_action( 'wp_footer', 'tw_search' );
 
 /**
- * Add Custom CSS
- * For Search Overlay
+ * Enqueue scripts and styles for TW Search overlay.
+ *
+ * @action wp_enqueue_scripts
  */
+function tw_search_enqueue_scripts() {
 
-function twSearch_addCSSJS() {
 	// Respects SSL, Style.css is relative to the current file
-	wp_enqueue_style( 'twSearch-css', plugins_url( 'tw-search-style.css', __FILE__ ) );
-	wp_enqueue_script( 'twSearch-js',
-	                   plugin_dir_url( __FILE__ ) . 'tw-search-scripts.js',
-	                   array( 'jquery' ),
-	                   '1.0.1',
-	                   false );
+	wp_enqueue_style(
+		'twSearch-css',
+		TWS_URL . 'tw-search-style.css',
+		array( 'dashicons' ),
+		TWS_VERSION
+	);
+
+	wp_enqueue_script(
+		'twSearch-js',
+		TWS_URL . 'tw-search-scripts.js',
+		array( 'jquery' ),
+		TWS_VERSION,
+		false
+	);
 }
 
-add_action( 'wp_enqueue_scripts', 'twSearch_addCSSJS' );
+add_action( 'wp_enqueue_scripts', 'tw_search_enqueue_scripts' );
 
 /**
  * Add Search link to menu

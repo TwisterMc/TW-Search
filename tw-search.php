@@ -345,31 +345,23 @@ function tw_search_menu_items( $items, $args ) {
 		$tw_search_display = 'icon';
 	}
 
-	$menuSlug = $args->menu->slug;
+	$items .= '<li class="twSearch">';
 
-	// Sometimes things don't return like we expected.
-	if ( ! $menuSlug ) {
-		$menuSlug = get_object_vars( $args );
-		$menuSlug = $menuSlug[ menu ];
+	switch ( $tw_search_display ) {
+		case 'icon':
+			$items .= '<a href="#" class="js-twSearch twSearchIcon"><span class="dashicons dashicons-search"></span><span class="twSearchIsHidden">' . __( 'Search' ) . '</span></a>';
+			break;
+		case 'word':
+			$items .= '<a href="#" class="js-twSearch">' . __( 'Search' ) . '</a>';
+			break;
+		case 'both':
+			$items .= '<a href="#" class="js-twSearch twSearchIcon"><span class="dashicons dashicons-search"></span> ' . __( 'Search' ) . '</a>';
+			break;
 	}
 
-	if ( $tw_search_location ) {
-		if ( $menuSlug == $tw_search_location ) {
-			$items .= '<li class="twSearch">';
-			if ( $tw_search_display == 'icon' ) {
-				$items .= '<a href="#" class="js-twSearch twSearchIcon"><span class="dashicons dashicons-search"></span><span class="twSearchIsHidden">' . __( 'Search' ) . '</span></a>';
-			} else if ( $tw_search_display == 'word' ) {
-				$items .= '<a href="#" class="js-twSearch">' . __( 'Search' ) . '</a>';
-			} else {
-				$items .= '<a href="#" class="js-twSearch twSearchIcon"><span class="dashicons dashicons-search"></span> ' . __( 'Search' ) . '</a>';
-			}
-			$items .= '</li>';
+	$items .= '</li>';
 
-			return $items;
-		}
-
-		return $items;
-	}
+	return $items;
 }
 
 add_filter( 'wp_nav_menu_items', 'tw_search_menu_items', 10, 2 );

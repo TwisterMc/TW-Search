@@ -15,6 +15,13 @@
  */
 
 /**
+ * Exit early if directly accessed via URL.
+ */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
  * Get registered navigation menus
  */
 function twSearchGetNavMenus() {

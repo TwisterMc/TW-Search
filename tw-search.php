@@ -201,28 +201,37 @@ function tw_search_esc_html( $safe_text, $text ) {
 add_filter( 'esc_html', 'tw_search_esc_html', 10, 2 );
 
 /**
- * Add Search Overlay
+ * Print search overlay markup.
+ *
+ * The 'wp_footer' hook prints scripts or data before the closing body tag on the front end.
+ *
+ * @action wp_footer
  */
-function twSearch() {
+function tw_search() {
 
-	$twSearchColor = get_theme_mod( 'twSearch_color' );
-	if ( ! $twSearchColor ) {
-		$twSearchColor = 'dark'; // default
+	$tw_search_color = get_theme_mod( 'twSearch_color' );
+
+	if ( empty( $tw_search_color ) ) {
+		$tw_search_color = 'dark';
 	}
 
 	?>
 
-	<!-- meet and potatoes -->
+	<!-- meat and potatoes -->
 	<div class="twSearchPopup">
-		<div class="twSearchBg twSearchBg-<?php echo $twSearchColor; ?>"></div>
-		<div class="twSearchFormWrapper twSearchFormWrapper-<?php echo $twSearchColor; ?>">
+		<div class="twSearchBg twSearchBg-<?php echo esc_attr( $tw_search_color ); ?>"></div>
+		<div class="twSearchFormWrapper twSearchFormWrapper-<?php echo esc_attr( $tw_search_color ); ?>">
 			<form action="/">
 				<div class="twSearchForm">
-					<input type="search" class="twSearchBox" value="<?php echo get_search_query(); ?>" name="s"
-						   placeholder="<?php _e( 'input search string and hit enter' ); ?>">
-					<label for="search"><?php _e( 'Search' ); ?></label>
+					<input type="search" name="s" class="twSearchBox" value="<?php echo get_search_query(); ?>"
+						   placeholder="<?php esc_attr_e( 'input search string and hit enter', 'tw-search' ); ?>">
+					<label for="search">
+						<?php esc_attr_e( 'Search', 'tw-search' ); ?>
+					</label>
 					<input type="submit" value="Search" class="searchButton">
-					<div class="twSearchBoxDesc"><?php _e( 'input search string and hit enter' ); ?></div>
+					<div class="twSearchBoxDesc">
+						<?php esc_attr_e( 'input search string and hit enter', 'tw-search' ); ?>
+					</div>
 				</div>
 			</form>
 		</div>
@@ -231,7 +240,7 @@ function twSearch() {
 	<?php
 }
 
-add_action( 'get_footer', 'twSearch' );
+add_action( 'wp_footer', 'tw_search' );
 
 /**
  * Add Custom CSS

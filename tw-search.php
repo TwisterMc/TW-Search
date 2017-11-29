@@ -269,6 +269,17 @@ function tw_search_enqueue_scripts() {
 add_action( 'wp_enqueue_scripts', 'tw_search_enqueue_scripts' );
 
 /**
+ * Enqueue scripts and styles specifically for Customizer interface.
+ *
+ * @action customize_controls_enqueue_scripts
+ */
+function tw_search_customize_controls_enqueue_scripts() {
+	wp_enqueue_style( 'dashicons' );
+}
+
+add_action( 'customize_controls_enqueue_scripts', 'tw_search_customize_controls_enqueue_scripts' );
+
+/**
  * Add Search link to menu
  */
 add_filter( 'wp_nav_menu_items', 'FE_twSearch', 10, 2 );

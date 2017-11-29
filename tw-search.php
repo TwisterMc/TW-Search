@@ -62,6 +62,15 @@ define( 'TWS_REL_DIR', basename( TWS_DIR ) . '/' );
 define( 'TWS_URL', plugins_url( '/', TWS_FILE ) );
 
 /**
+ * Load the plugin textdomain.
+ */
+function tw_search_load_plugin() {
+	load_plugin_textdomain( 'tw-search', false, TWS_REL_DIR . 'languages/' );
+}
+
+add_action( 'plugins_loaded', 'tw_search_load_plugin' );
+
+/**
  * Settings
  * Adds the individual sections, settings, and controls to the theme customizer
  */

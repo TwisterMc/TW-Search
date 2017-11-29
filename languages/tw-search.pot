@@ -1,0 +1,94 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: TW Search\n"
+"POT-Creation-Date: 2017-11-29 15:54-0600\n"
+"PO-Revision-Date: 2017-11-29 15:53-0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.4\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: tw-search.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: tw-search.php:90
+msgid "TW Search Settings"
+msgstr ""
+
+#: tw-search.php:91
+msgid "Customize the search settings."
+msgstr ""
+
+#: tw-search.php:112
+msgid "Overlay Background"
+msgstr ""
+
+#: tw-search.php:116
+msgid "Dark"
+msgstr ""
+
+#: tw-search.php:117
+msgid "Light"
+msgstr ""
+
+#: tw-search.php:138
+msgid "Add To Menu"
+msgstr ""
+
+#: tw-search.php:165
+msgid "Display As"
+msgstr ""
+
+#: tw-search.php:169 tw-search.php:194 tw-search.php:198
+msgid "Magnifying Glass Icon"
+msgstr ""
+
+#: tw-search.php:170
+msgid "Search (word)"
+msgstr ""
+
+#: tw-search.php:171
+msgid "Both"
+msgstr ""
+
+#: tw-search.php:227 tw-search.php:233
+msgid "input search string and hit enter"
+msgstr ""
+
+#: tw-search.php:229 tw-search.php:398 tw-search.php:401 tw-search.php:404
+msgid "Search"
+msgstr ""
+
+#: tw-search.php:464
+msgid "None (use .js-twSearch class)"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "TW Search"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://www.twistermc.com/43150/tw-search-overlay-for-wordpress/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Adds a search icon to menu and displays search input in an overlay."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Thomas McMahon"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.twistermc.com/"
+msgstr ""

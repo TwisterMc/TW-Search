@@ -334,10 +334,15 @@ function tw_search_menu_items( $items, $args ) {
 		return $items;
 	}
 
-	$twSearchDisplay  = get_theme_mod( 'twSearch_display' );
+	/**
+	 * The "display setting" that was chosen in Customizer.
+	 *
+	 * @var string $tw_search_display
+	 */
+	$tw_search_display  = get_theme_mod( 'twSearch_display' );
 
-	if ( ! $twSearchDisplay ) {
-		$twSearchDisplay = 'icon'; // default;
+	if ( empty( $tw_search_display ) ) {
+		$tw_search_display = 'icon';
 	}
 
 	$menuSlug = $args->menu->slug;
@@ -351,9 +356,9 @@ function tw_search_menu_items( $items, $args ) {
 	if ( $tw_search_location ) {
 		if ( $menuSlug == $tw_search_location ) {
 			$items .= '<li class="twSearch">';
-			if ( $twSearchDisplay == 'icon' ) {
+			if ( $tw_search_display == 'icon' ) {
 				$items .= '<a href="#" class="js-twSearch twSearchIcon"><span class="dashicons dashicons-search"></span><span class="twSearchIsHidden">' . __( 'Search' ) . '</span></a>';
-			} else if ( $twSearchDisplay == 'word' ) {
+			} else if ( $tw_search_display == 'word' ) {
 				$items .= '<a href="#" class="js-twSearch">' . __( 'Search' ) . '</a>';
 			} else {
 				$items .= '<a href="#" class="js-twSearch twSearchIcon"><span class="dashicons dashicons-search"></span> ' . __( 'Search' ) . '</a>';

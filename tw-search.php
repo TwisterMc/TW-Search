@@ -345,23 +345,105 @@ function tw_search_menu_items( $items, $args ) {
 		$tw_search_display = 'icon';
 	}
 
-	$items .= '<li class="twSearch">';
+	/**
+	 * The opening wrapper element for the search nav menu item.
+	 *
+	 * @var string $item_opening_wrapper
+	 */
+	$item_opening_wrapper  = '<li class="twSearch">';
+
+	/**
+	 * Filters the opening wrapper element.
+	 *
+	 * Not every walker uses <li> for an opening menu item wrapper.
+	 *
+	 * @param string $item_opening_wrapper The opening HTML wrapper element.
+	 * @param string $items                The HTML list content for the menu items.
+	 * @param \stdClass $args              An object containing wp_nav_menu() arguments.
+	 */
+	$item_opening_wrapper = apply_filters(
+		'tw_search_menu_item_opening_wrapper',
+		$item_opening_wrapper,
+		$items,
+		$args
+	);
+
+	/**
+	 * The closing wrapper element for the search nav menu item.
+	 *
+	 * @var string $item_closing_wrapper
+	 */
+	$item_closing_wrapper = '</li>';
+
+	/**
+	 * Filters the closing wrapper element.
+	 *
+	 * Not every walker uses </li> for a closing menu item wrapper.
+	 *
+	 * @param string    $item_closing_wrapper The closing HTML wrapper element.
+	 * @param string    $item_opening_wrapper The opening HTML wrapper element.
+	 * @param string    $items                The HTML list content for the menu items.
+	 * @param \stdClass $args                 An object containing wp_nav_menu() arguments.
+	 */
+	$item_closing_wrapper = apply_filters(
+		'tw_search_menu_item_closing_wrapper',
+		$item_closing_wrapper,
+		$item_opening_wrapper,
+		$items,
+		$args
+	);
 
 	switch ( $tw_search_display ) {
 		case 'icon':
-			$items .= '<a href="#" class="js-twSearch twSearchIcon"><span class="dashicons dashicons-search"></span><span class="twSearchIsHidden">' . __( 'Search' ) . '</span></a>';
+			$item = '<a href="#" class="js-twSearch twSearchIcon"><span class="dashicons dashicons-search"></span><span class="twSearchIsHidden">' . __( 'Search', 'tw-search' ) . '</span></a>';
 			break;
 		case 'word':
-			$items .= '<a href="#" class="js-twSearch">' . __( 'Search' ) . '</a>';
+			$item = '<a href="#" class="js-twSearch">' . __( 'Search', 'tw-search' ) . '</a>';
 			break;
 		case 'both':
-			$items .= '<a href="#" class="js-twSearch twSearchIcon"><span class="dashicons dashicons-search"></span> ' . __( 'Search' ) . '</a>';
+			$item = '<a href="#" class="js-twSearch twSearchIcon"><span class="dashicons dashicons-search"></span> ' . __( 'Search', 'tw-search' ) . '</a>';
 			break;
 	}
 
-	$items .= '</li>';
+	/**
+	 * Filters the search menu item element.
+	 *
+	 * @param string    $item                 The search menu item element.
+	 * @param string    $item_opening_wrapper The opening HTML wrapper element.
+	 * @param string    $item_closing_wrapper The closing HTML wrapper element.
+	 * @param string    $items                The HTML list content for the menu items.
+	 * @param \stdClass $args                 An object containing wp_nav_menu() arguments.
+	 */
+	$item = apply_filters(
+		'tw_search_menu_item',
+		$item,
+		$item_opening_wrapper,
+		$item_closing_wrapper,
+		$items,
+		$args
+	);
 
-	return $items;
+	$items .= $item_opening_wrapper . $item . $item_closing_wrapper;
+
+	/**
+	 * Filters the HTML list content for navigation menus after we've appended our search menu item.
+	 *
+	 * Last chance to alter the output before it's returned to wp_nav_menu.
+	 *
+	 * @param string    $items                The HTML list content for the menu items.
+	 * @param \stdClass $args                 An object containing wp_nav_menu() arguments.
+	 * @param string    $item_opening_wrapper The opening HTML wrapper element.
+	 * @param string    $item                 The search menu item element.
+	 * @param string    $item_closing_wrapper The closing HTML wrapper element.
+	 */
+	return apply_filters(
+		'tw_search_menu_items',
+		$items,
+		$args,
+		$item_opening_wrapper,
+		$item,
+		$item_closing_wrapper
+	);
 }
 
 add_filter( 'wp_nav_menu_items', 'tw_search_menu_items', 10, 2 );

@@ -298,7 +298,42 @@ function tw_search_menu_items( $items, $args ) {
 		return $items;
 	}
 
-	$twSearchLocation = get_theme_mod( 'twSearch_location' );
+	/**
+	 * The "menu slug" that was chosen in Customizer.
+	 *
+	 * @var string $tw_search_location
+	 */
+	$tw_search_location = get_theme_mod( 'twSearch_location' );
+
+	if ( empty( $tw_search_location ) ) {
+		return $items;
+	}
+
+	/**
+	 * False if $menu param isn't supplied or term does not exist, menu object if successful.
+	 *
+	 * Example "nav menu object" (really just a WP_Term)...
+	 *     $menu = WP_Term Object (
+	 *         [term_id]          => 2
+	 *         [name]             => Main Menu
+	 *         [slug]             => main-menu
+	 *         [term_group]       => 0
+	 *         [term_taxonomy_id] => 2
+	 *         [taxonomy]         => nav_menu
+	 *         [description]      =>
+	 *         [parent]           => 0
+	 *         [count]            => 11
+	 *         [filter]           => raw
+	 *     )
+	 *
+	 * @var WP_Term|false $menu
+	 */
+	$menu = wp_get_nav_menu_object( $args->menu );
+
+	if ( false === $menu || empty( $menu->slug ) || $menu->slug !== $tw_search_location ) {
+		return $items;
+	}
+
 	$twSearchDisplay  = get_theme_mod( 'twSearch_display' );
 
 	if ( ! $twSearchDisplay ) {
@@ -313,8 +348,8 @@ function tw_search_menu_items( $items, $args ) {
 		$menuSlug = $menuSlug[ menu ];
 	}
 
-	if ( $twSearchLocation ) {
-		if ( $menuSlug == $twSearchLocation ) {
+	if ( $tw_search_location ) {
+		if ( $menuSlug == $tw_search_location ) {
 			$items .= '<li class="twSearch">';
 			if ( $twSearchDisplay == 'icon' ) {
 				$items .= '<a href="#" class="js-twSearch twSearchIcon"><span class="dashicons dashicons-search"></span><span class="twSearchIsHidden">' . __( 'Search' ) . '</span></a>';

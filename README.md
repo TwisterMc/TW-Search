@@ -19,3 +19,7 @@ You can choose to add a custom class `js-twSearch`. This can be added it to anyt
 3. Screenshots
 4. Make Better
 5. Test
+
+## Release Notes
+- 0.3 - Added ability to hit escape key and close the search overlay.
+- 0.2.1 and earlier - Initial release. 

@@ -4,7 +4,7 @@
  * Plugin Name:       TW Search
  * Plugin URI:        https://www.twistermc.com/43150/tw-search-overlay-for-wordpress/
  * Description:       Adds a search icon to menu and displays search input in an overlay.
- * Version:           0.2.1
+ * Version:           0.3
  * Author:            Thomas McMahon
  * Author URI:        http://www.twistermc.com/
  * License:           GPL-3.0+
@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @var string TWS_VERSION
  */
-define( 'TWS_VERSION', '0.2.1' );
+define( 'TWS_VERSION', '0.3' );
 
 /**
  * The full path and filename of this plugin file with symlinks resolved.

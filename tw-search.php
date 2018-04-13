@@ -339,7 +339,7 @@ function tw_search_menu_items( $items, $args ) {
 	 *
 	 * @var string $tw_search_display
 	 */
-	$tw_search_display  = get_theme_mod( 'twSearch_display' );
+	$tw_search_display = get_theme_mod( 'twSearch_display' );
 
 	if ( empty( $tw_search_display ) ) {
 		$tw_search_display = 'icon';
@@ -350,7 +350,7 @@ function tw_search_menu_items( $items, $args ) {
 	 *
 	 * @var string $item_opening_wrapper
 	 */
-	$item_opening_wrapper  = '<li class="twSearch">';
+	$item_opening_wrapper = '<li class="twSearch">';
 
 	/**
 	 * Filters the opening wrapper element.
